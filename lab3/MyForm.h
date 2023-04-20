@@ -68,7 +68,7 @@ namespace lab3 {
 	private: System::Windows::Forms::Label^ A_Label;
 	private: System::Windows::Forms::Label^ B_Label;
 	private: System::Windows::Forms::Label^ C_Label;
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::TabControl^ tabControl1;
 	private: System::Windows::Forms::TabPage^ tabPage1;
 	private: System::Windows::Forms::TabPage^ tabPage2;
@@ -116,7 +116,6 @@ namespace lab3 {
 			this->A_Label = (gcnew System::Windows::Forms::Label());
 			this->B_Label = (gcnew System::Windows::Forms::Label());
 			this->C_Label = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->A2_Input = (gcnew System::Windows::Forms::TextBox());
@@ -223,15 +222,6 @@ namespace lab3 {
 			this->C_Label->TabIndex = 10;
 			this->C_Label->Text = L"Cx";
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(6, 18);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(154, 13);
-			this->label1->TabIndex = 11;
-			this->label1->Text = L"Має бути 2 числа через кому";
-			// 
 			// tabControl1
 			// 
 			this->tabControl1->Controls->Add(this->tabPage1);
@@ -253,7 +243,6 @@ namespace lab3 {
 			this->tabPage1->Controls->Add(this->A1_Input);
 			this->tabPage1->Controls->Add(this->Result);
 			this->tabPage1->Controls->Add(this->C1_Input);
-			this->tabPage1->Controls->Add(this->label1);
 			this->tabPage1->Controls->Add(this->B1_Input);
 			this->tabPage1->Controls->Add(this->C_Label);
 			this->tabPage1->Controls->Add(this->CountButton);
@@ -364,6 +353,8 @@ namespace lab3 {
 
 		}
 #pragma endregion
+	// 0 - cos
+	// 1 - height
 	int whatChecked = 0;
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -379,10 +370,10 @@ namespace lab3 {
 			C.x = Convert::ToDouble(C1_Input->Text);
 			C.y = Convert::ToDouble(C2_Input->Text);
 
-			VECTOR AB{
-				B.x - A.x,
-				B.y - A.y,
-				sqrt(pow(AB.x,2)+pow(AB.y,2))
+			VECTOR BA{
+				 A.x - B.x,
+				 A.y- B.y ,
+				sqrt(pow(BA.x,2)+pow(BA.y,2))
 			}, 
 			BC{
 				C.x - B.x,
@@ -394,13 +385,17 @@ namespace lab3 {
 				A.y - C.y,
 				sqrt(pow(CA.x,2) + pow(CA.y,2))
 			};
-			Result->Text = Convert::ToString(AB.length);
+
+			
 			if (whatChecked)
 			{
-				
+				double p = (BA.length + BC.length + CA.length) / 2;
+				double h_a = (2 / BC.length) * sqrt(p*(p-BC.length)*(p-BA.length)*(p-CA.length));
+				Result->Text = Convert::ToString(h_a);
 			}
 			else {
-
+				double cos = (BC.x * BA.x + BC.y * BA.y) / (BC.length * BA.length);
+				Result->Text = Convert::ToString(cos / 2);
 			}
 		}
 		catch (Exception^ ex)
