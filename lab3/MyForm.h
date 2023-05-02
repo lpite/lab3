@@ -86,6 +86,29 @@ namespace lab3 {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip2;
+	private: System::Windows::Forms::TextBox^ Y_textBox;
+	private: System::Windows::Forms::TextBox^ X_textBox;
+	private: System::Windows::Forms::TextBox^ X2_textBox;
+	private: System::Windows::Forms::TextBox^ X1_textBox;
+	private: System::Windows::Forms::TextBox^ X3_textBox;
+	private: System::Windows::Forms::TextBox^ Y1_textBox;
+	private: System::Windows::Forms::TextBox^ Y2_textBox;
+	private: System::Windows::Forms::TextBox^ Y3_textBox;
+	private: System::Windows::Forms::Label^ X_label;
+	private: System::Windows::Forms::Label^ X1_table;
+	private: System::Windows::Forms::Label^ X2_label;
+	private: System::Windows::Forms::Label^ X3_label;
+	private: System::Windows::Forms::Label^ Y_label;
+	private: System::Windows::Forms::Label^ Y1_label;
+	private: System::Windows::Forms::Label^ Y2_label;
+	private: System::Windows::Forms::Label^ Y3_label;
+	private: System::Windows::Forms::Button^ Find_Button;
+
+
+
+
+
+
 
 
 
@@ -127,10 +150,28 @@ namespace lab3 {
 			this->A1_Input = (gcnew System::Windows::Forms::TextBox());
 			this->Result = (gcnew System::Windows::Forms::Label());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->Find_Button = (gcnew System::Windows::Forms::Button());
+			this->Y2_label = (gcnew System::Windows::Forms::Label());
+			this->Y3_label = (gcnew System::Windows::Forms::Label());
+			this->Y1_label = (gcnew System::Windows::Forms::Label());
+			this->Y_label = (gcnew System::Windows::Forms::Label());
+			this->X3_label = (gcnew System::Windows::Forms::Label());
+			this->X2_label = (gcnew System::Windows::Forms::Label());
+			this->X1_table = (gcnew System::Windows::Forms::Label());
+			this->X_label = (gcnew System::Windows::Forms::Label());
+			this->Y3_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->Y2_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->Y1_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->X3_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->X2_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->X1_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->Y_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->X_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->contextMenuStrip2 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->panel1->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
+			this->tabPage2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// contextMenuStrip1
@@ -224,6 +265,7 @@ namespace lab3 {
 			// 
 			// tabControl1
 			// 
+			this->tabControl1->AccessibleName = L"";
 			this->tabControl1->Controls->Add(this->tabPage1);
 			this->tabControl1->Controls->Add(this->tabPage2);
 			this->tabControl1->Location = System::Drawing::Point(12, 12);
@@ -323,6 +365,23 @@ namespace lab3 {
 			// 
 			// tabPage2
 			// 
+			this->tabPage2->Controls->Add(this->Find_Button);
+			this->tabPage2->Controls->Add(this->Y2_label);
+			this->tabPage2->Controls->Add(this->Y3_label);
+			this->tabPage2->Controls->Add(this->Y1_label);
+			this->tabPage2->Controls->Add(this->Y_label);
+			this->tabPage2->Controls->Add(this->X3_label);
+			this->tabPage2->Controls->Add(this->X2_label);
+			this->tabPage2->Controls->Add(this->X1_table);
+			this->tabPage2->Controls->Add(this->X_label);
+			this->tabPage2->Controls->Add(this->Y3_textBox);
+			this->tabPage2->Controls->Add(this->Y2_textBox);
+			this->tabPage2->Controls->Add(this->Y1_textBox);
+			this->tabPage2->Controls->Add(this->X3_textBox);
+			this->tabPage2->Controls->Add(this->X2_textBox);
+			this->tabPage2->Controls->Add(this->X1_textBox);
+			this->tabPage2->Controls->Add(this->Y_textBox);
+			this->tabPage2->Controls->Add(this->X_textBox);
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
@@ -330,6 +389,147 @@ namespace lab3 {
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"tabPage2";
 			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// Find_Button
+			// 
+			this->Find_Button->Location = System::Drawing::Point(261, 98);
+			this->Find_Button->Name = L"Find_Button";
+			this->Find_Button->Size = System::Drawing::Size(75, 23);
+			this->Find_Button->TabIndex = 16;
+			this->Find_Button->Text = L"Find result";
+			this->Find_Button->UseVisualStyleBackColor = true;
+			this->Find_Button->Click += gcnew System::EventHandler(this, &MyForm::Find_Button_Click);
+			// 
+			// Y2_label
+			// 
+			this->Y2_label->AutoSize = true;
+			this->Y2_label->Location = System::Drawing::Point(133, 108);
+			this->Y2_label->Name = L"Y2_label";
+			this->Y2_label->Size = System::Drawing::Size(20, 13);
+			this->Y2_label->TabIndex = 15;
+			this->Y2_label->Text = L"Y2";
+			// 
+			// Y3_label
+			// 
+			this->Y3_label->AutoSize = true;
+			this->Y3_label->Location = System::Drawing::Point(202, 108);
+			this->Y3_label->Name = L"Y3_label";
+			this->Y3_label->Size = System::Drawing::Size(20, 13);
+			this->Y3_label->TabIndex = 14;
+			this->Y3_label->Text = L"Y3";
+			// 
+			// Y1_label
+			// 
+			this->Y1_label->AutoSize = true;
+			this->Y1_label->Location = System::Drawing::Point(80, 108);
+			this->Y1_label->Name = L"Y1_label";
+			this->Y1_label->Size = System::Drawing::Size(20, 13);
+			this->Y1_label->TabIndex = 13;
+			this->Y1_label->Text = L"Y1";
+			// 
+			// Y_label
+			// 
+			this->Y_label->AutoSize = true;
+			this->Y_label->Location = System::Drawing::Point(16, 108);
+			this->Y_label->Name = L"Y_label";
+			this->Y_label->Size = System::Drawing::Size(14, 13);
+			this->Y_label->TabIndex = 12;
+			this->Y_label->Text = L"Y";
+			// 
+			// X3_label
+			// 
+			this->X3_label->AutoSize = true;
+			this->X3_label->BackColor = System::Drawing::Color::Transparent;
+			this->X3_label->Location = System::Drawing::Point(202, 46);
+			this->X3_label->Name = L"X3_label";
+			this->X3_label->Size = System::Drawing::Size(20, 13);
+			this->X3_label->TabIndex = 11;
+			this->X3_label->Text = L"X3";
+			// 
+			// X2_label
+			// 
+			this->X2_label->AutoSize = true;
+			this->X2_label->BackColor = System::Drawing::Color::Transparent;
+			this->X2_label->Location = System::Drawing::Point(133, 46);
+			this->X2_label->Name = L"X2_label";
+			this->X2_label->Size = System::Drawing::Size(20, 13);
+			this->X2_label->TabIndex = 10;
+			this->X2_label->Text = L"X2";
+			// 
+			// X1_table
+			// 
+			this->X1_table->AutoSize = true;
+			this->X1_table->BackColor = System::Drawing::Color::Transparent;
+			this->X1_table->Location = System::Drawing::Point(80, 46);
+			this->X1_table->Name = L"X1_table";
+			this->X1_table->Size = System::Drawing::Size(20, 13);
+			this->X1_table->TabIndex = 9;
+			this->X1_table->Text = L"X1";
+			// 
+			// X_label
+			// 
+			this->X_label->AutoSize = true;
+			this->X_label->Location = System::Drawing::Point(16, 46);
+			this->X_label->Name = L"X_label";
+			this->X_label->Size = System::Drawing::Size(14, 13);
+			this->X_label->TabIndex = 8;
+			this->X_label->Text = L"X";
+			// 
+			// Y3_textBox
+			// 
+			this->Y3_textBox->Location = System::Drawing::Point(194, 124);
+			this->Y3_textBox->Name = L"Y3_textBox";
+			this->Y3_textBox->Size = System::Drawing::Size(37, 20);
+			this->Y3_textBox->TabIndex = 7;
+			// 
+			// Y2_textBox
+			// 
+			this->Y2_textBox->Location = System::Drawing::Point(127, 124);
+			this->Y2_textBox->Name = L"Y2_textBox";
+			this->Y2_textBox->Size = System::Drawing::Size(37, 20);
+			this->Y2_textBox->TabIndex = 6;
+			// 
+			// Y1_textBox
+			// 
+			this->Y1_textBox->Location = System::Drawing::Point(63, 124);
+			this->Y1_textBox->Name = L"Y1_textBox";
+			this->Y1_textBox->Size = System::Drawing::Size(37, 20);
+			this->Y1_textBox->TabIndex = 5;
+			// 
+			// X3_textBox
+			// 
+			this->X3_textBox->Location = System::Drawing::Point(194, 62);
+			this->X3_textBox->Name = L"X3_textBox";
+			this->X3_textBox->Size = System::Drawing::Size(37, 20);
+			this->X3_textBox->TabIndex = 4;
+			// 
+			// X2_textBox
+			// 
+			this->X2_textBox->Location = System::Drawing::Point(127, 62);
+			this->X2_textBox->Name = L"X2_textBox";
+			this->X2_textBox->Size = System::Drawing::Size(37, 20);
+			this->X2_textBox->TabIndex = 3;
+			// 
+			// X1_textBox
+			// 
+			this->X1_textBox->Location = System::Drawing::Point(63, 62);
+			this->X1_textBox->Name = L"X1_textBox";
+			this->X1_textBox->Size = System::Drawing::Size(37, 20);
+			this->X1_textBox->TabIndex = 2;
+			// 
+			// Y_textBox
+			// 
+			this->Y_textBox->Location = System::Drawing::Point(6, 124);
+			this->Y_textBox->Name = L"Y_textBox";
+			this->Y_textBox->Size = System::Drawing::Size(37, 20);
+			this->Y_textBox->TabIndex = 1;
+			// 
+			// X_textBox
+			// 
+			this->X_textBox->Location = System::Drawing::Point(6, 62);
+			this->X_textBox->Name = L"X_textBox";
+			this->X_textBox->Size = System::Drawing::Size(37, 20);
+			this->X_textBox->TabIndex = 0;
 			// 
 			// contextMenuStrip2
 			// 
@@ -349,6 +549,8 @@ namespace lab3 {
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
+			this->tabPage2->ResumeLayout(false);
+			this->tabPage2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -411,5 +613,39 @@ namespace lab3 {
 	private: System::Void Height_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		whatChecked = 1;
 	}
+
+private: System::Void Find_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		double X = Convert::ToDouble(X_textBox->Text);
+		double X1 = Convert::ToDouble(X1_textBox->Text);
+		double X2 = Convert::ToDouble(X2_textBox->Text);
+		double X3 = Convert::ToDouble(X3_textBox->Text);
+		double Y = Convert::ToDouble(Y_textBox->Text);
+		double Y1 = Convert::ToDouble(Y1_textBox->Text);
+		double Y2 = Convert::ToDouble(Y2_textBox->Text);
+		double Y3 = Convert::ToDouble(Y3_textBox->Text);
+		if (X==X3)
+		{
+			MessageBox::Show(Convert::ToString(Y3*0.5));
+		}
+		else if (X2<=X && X<=X3) {
+			double result = (1.25 * Y2) * ((X - X1) / (X3 - X1)) * (Y2 - Y1);
+			MessageBox::Show(Convert::ToString(result));
+		}
+		else if (X1<=X && X<=X2)
+		{
+			double result = (0.75 * Y1) * ((X +X1) / (X2 - X1)) * (Y2 - Y3);
+			MessageBox::Show(Convert::ToString(result));
+		}
+		else {
+			MessageBox::Show("NO");
+		}
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+	}
+}
 };
 }
