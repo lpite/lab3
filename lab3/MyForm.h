@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <cstring>
 #include <math.h>
+#include <string>
+
 
 struct VECTOR {
 	double x;
@@ -103,6 +105,11 @@ namespace lab3 {
 	private: System::Windows::Forms::Label^ Y2_label;
 	private: System::Windows::Forms::Label^ Y3_label;
 	private: System::Windows::Forms::Button^ Find_Button;
+	private: System::Windows::Forms::TabPage^ tabPage3;
+	private: System::Windows::Forms::Button^ TabulateButton;
+	private: System::Windows::Forms::TextBox^ Tabulate_Input;
+	private: System::Windows::Forms::ListBox^ listBox1;
+
 
 
 
@@ -167,11 +174,16 @@ namespace lab3 {
 			this->X1_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->Y_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->X_textBox = (gcnew System::Windows::Forms::TextBox());
+			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->Tabulate_Input = (gcnew System::Windows::Forms::TextBox());
+			this->TabulateButton = (gcnew System::Windows::Forms::Button());
 			this->contextMenuStrip2 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->panel1->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
+			this->tabPage3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// contextMenuStrip1
@@ -268,6 +280,7 @@ namespace lab3 {
 			this->tabControl1->AccessibleName = L"";
 			this->tabControl1->Controls->Add(this->tabPage1);
 			this->tabControl1->Controls->Add(this->tabPage2);
+			this->tabControl1->Controls->Add(this->tabPage3);
 			this->tabControl1->Location = System::Drawing::Point(12, 12);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
@@ -531,10 +544,48 @@ namespace lab3 {
 			this->X_textBox->Size = System::Drawing::Size(37, 20);
 			this->X_textBox->TabIndex = 0;
 			// 
+			// tabPage3
+			// 
+			this->tabPage3->Controls->Add(this->listBox1);
+			this->tabPage3->Controls->Add(this->Tabulate_Input);
+			this->tabPage3->Controls->Add(this->TabulateButton);
+			this->tabPage3->Location = System::Drawing::Point(4, 22);
+			this->tabPage3->Name = L"tabPage3";
+			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage3->Size = System::Drawing::Size(480, 261);
+			this->tabPage3->TabIndex = 2;
+			this->tabPage3->Text = L"tabPage3";
+			this->tabPage3->UseVisualStyleBackColor = true;
+			// 
+			// Tabulate_Input
+			// 
+			this->Tabulate_Input->Location = System::Drawing::Point(23, 71);
+			this->Tabulate_Input->Name = L"Tabulate_Input";
+			this->Tabulate_Input->Size = System::Drawing::Size(100, 20);
+			this->Tabulate_Input->TabIndex = 1;
+			// 
+			// TabulateButton
+			// 
+			this->TabulateButton->Location = System::Drawing::Point(23, 133);
+			this->TabulateButton->Name = L"TabulateButton";
+			this->TabulateButton->Size = System::Drawing::Size(75, 23);
+			this->TabulateButton->TabIndex = 0;
+			this->TabulateButton->Text = L"Tabulate";
+			this->TabulateButton->UseVisualStyleBackColor = true;
+			this->TabulateButton->Click += gcnew System::EventHandler(this, &MyForm::TabulateButton_Click);
+			// 
 			// contextMenuStrip2
 			// 
 			this->contextMenuStrip2->Name = L"contextMenuStrip2";
 			this->contextMenuStrip2->Size = System::Drawing::Size(61, 4);
+			// 
+			// listBox1
+			// 
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->Location = System::Drawing::Point(222, 71);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(120, 95);
+			this->listBox1->TabIndex = 2;
 			// 
 			// MyForm
 			// 
@@ -551,6 +602,8 @@ namespace lab3 {
 			this->tabPage1->PerformLayout();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
+			this->tabPage3->ResumeLayout(false);
+			this->tabPage3->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -572,23 +625,19 @@ namespace lab3 {
 			C.x = Convert::ToDouble(C1_Input->Text);
 			C.y = Convert::ToDouble(C2_Input->Text);
 
-			VECTOR BA{
-				 A.x - B.x,
-				 A.y- B.y ,
-				sqrt(pow(BA.x,2)+pow(BA.y,2))
-			}, 
-			BC{
-				C.x - B.x,
-				C.y - B.y,
-				sqrt(pow(BC.x,2) + pow(BC.y,2))
-			}, 
-			CA{
-				A.x - C.x,
-				A.y - C.y,
-				sqrt(pow(CA.x,2) + pow(CA.y,2))
-			};
-
+			VECTOR BA{}, BC{}, CA{};
+			BA.x = A.x - B.x;
+			BA.y = A.y - B.y;
+			BA.length = sqrt(pow(BA.x, 2) + pow(BA.y, 2));
 			
+			BC.x = C.x - B.x;
+			BC.y = C.y - B.y;
+			BC.length = sqrt(pow(BC.x, 2) + pow(BC.y, 2));
+			
+			CA.x = A.x - C.x;
+			CA.y = A.y - C.y;
+			CA.length = sqrt(pow(CA.x, 2) + pow(CA.y, 2));
+
 			if (whatChecked)
 			{
 				double p = (BA.length + BC.length + CA.length) / 2;
@@ -646,6 +695,25 @@ private: System::Void Find_Button_Click(System::Object^ sender, System::EventArg
 	{
 		MessageBox::Show(ex->Message);
 	}
+}
+private: System::Void TabulateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		int N = Convert::ToDouble(Tabulate_Input->Text);
+		double a = -1.0, b = 2.0, x = a;
+		listBox1->Items->Clear();
+		while (x <= b) {
+			x += (b - a) / N;
+			listBox1->Items->Add(Convert::ToString((exp(2.0 * x) + exp(-x)) / 4.0));
+		}
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+
+	}
+	
+
 }
 };
 }

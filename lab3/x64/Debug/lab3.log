@@ -1,0 +1,4 @@
+﻿  MyForm.cpp
+C:\Users\student\Documents\laba-3-main\lab3\MyForm.h(702,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  lab3.vcxproj -> C:\Users\student\Documents\laba-3-main\x64\Debug\lab3.exe
